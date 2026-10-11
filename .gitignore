@@ -1,0 +1,16 @@
+.venv
+__pycache__
+.DS_Store
+.ipynb_checkpoints
+
+data/raw_videos
+data/processed_videos
+outputs/demo_videos
+
+*.mp4, *.mov, *.avi 
+
+.env
+.env.example
+.env.*
+
+outputs/
