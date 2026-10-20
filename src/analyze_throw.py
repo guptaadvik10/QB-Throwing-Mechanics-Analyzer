@@ -28,7 +28,7 @@ def analyze_throw(video_path, model_path, throw_model):
     throw_df = throw_df.dropna(subset = ["elbow_angle_smoothed"])
 
     if throw_df.empty: 
-        return {"throw_detected": False}, df
+        return {"throw_detected": False}, df, None
 
     throw_df["standardized"] = np.linspace(0, 100, len(throw_df))
 
@@ -63,7 +63,7 @@ def analyze_throw(video_path, model_path, throw_model):
     print("calling OpenAI...")
     print(metrics["throw_series"][:5])
 
-    coach_analysis = None
+    coach_analysis = generate_throw_summary(metrics)
     print("OpenAI finished")
 
     return metrics, df, coach_analysis

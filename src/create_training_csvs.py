@@ -4,15 +4,18 @@ from sklearn.model_selection import StratifiedGroupKFold
 from src.video_processing import process_video
 from src.signal_cleaning import elbow_angle_cleaning
 from src.throw_segmentation import throw_segmentation
+from src.temporal_files import add_temporal_features
+from src.frame_labeler import frame_labeler
 
 MODEL_PATH = "models/pose_landmarker_full.task"
 
-
+""""
 # VIDEO 1 TOM BRADY
 
 brady_raw_df = process_video("data/raw_videos/tom_brady_throw.mp4", MODEL_PATH)
 brady_raw_df = pd.DataFrame(brady_raw_df)
 brady_cleaned_df = elbow_angle_cleaning(brady_raw_df)
+brady_cleaned_df = add_temporal_features(brady_cleaned_df)
 
 brady_cleaned_df["throwing_label"] = 0
 brady_cleaned_df.loc[
@@ -31,6 +34,8 @@ brady_cleaned_df.to_csv(
 allen_raw_df = process_video("data/raw_videos/josh_allen_throw.mp4", MODEL_PATH)
 allen_raw_df = pd.DataFrame(allen_raw_df)
 allen_cleaned_df = elbow_angle_cleaning(allen_raw_df)
+allen_cleaned_df = add_temporal_features(allen_cleaned_df)
+
 
 allen_cleaned_df["throwing_label"] = 0
 allen_cleaned_df.loc[
@@ -51,6 +56,8 @@ allen_cleaned_df.to_csv(
 mahomes_raw_df = process_video("data/raw_videos/patrick_mahomes_throw.mp4", MODEL_PATH)
 mahomes_raw_df = pd.DataFrame(mahomes_raw_df)
 mahomes_cleaned_df = elbow_angle_cleaning(mahomes_raw_df)
+mahomes_cleaned_df = add_temporal_features(mahomes_cleaned_df)
+
 
 mahomes_cleaned_df["throwing_label"] = 0
 mahomes_cleaned_df.loc[
@@ -71,6 +78,8 @@ mahomes_cleaned_df.to_csv(
 hurts_raw_df = process_video("data/raw_videos/jalen_hurts_throw.mp4", MODEL_PATH)
 hurts_raw_df = pd.DataFrame(hurts_raw_df)
 hurts_cleaned_df = elbow_angle_cleaning(hurts_raw_df)
+hurts_cleaned_df = add_temporal_features(hurts_cleaned_df)
+
 
 hurts_cleaned_df["throwing_label"] = 0
 hurts_cleaned_df.loc[
@@ -91,6 +100,8 @@ hurts_cleaned_df.to_csv(
 stafford_1_raw_df = process_video("data/raw_videos/matthew_stafford_throw_1.mp4", MODEL_PATH)
 stafford_1_raw_df = pd.DataFrame(stafford_1_raw_df)
 stafford_1_cleaned_df = elbow_angle_cleaning(stafford_1_raw_df)
+stafford_1_cleaned_df = add_temporal_features(stafford_1_cleaned_df)
+
 
 stafford_1_cleaned_df["throwing_label"] = 0
 stafford_1_cleaned_df.loc[
@@ -110,6 +121,8 @@ stafford_1_cleaned_df.to_csv(
 stafford_2_raw_df = process_video("data/raw_videos/matthew_stafford_throw_2.mp4", MODEL_PATH)
 stafford_2_raw_df = pd.DataFrame(stafford_2_raw_df)
 stafford_2_cleaned_df = elbow_angle_cleaning(stafford_2_raw_df)
+stafford_2_cleaned_df = add_temporal_features(stafford_2_cleaned_df)
+
 
 stafford_2_cleaned_df["throwing_label"] = 0
 stafford_2_cleaned_df.loc[
@@ -129,6 +142,8 @@ stafford_2_cleaned_df.to_csv(
 brees_raw_df = process_video("data/raw_videos/drew_brees_throw.mp4", MODEL_PATH)
 brees_raw_df = pd.DataFrame(brees_raw_df)
 brees_cleaned_df = elbow_angle_cleaning(brees_raw_df)
+brees_cleaned_df = add_temporal_features(brees_cleaned_df)
+
 
 brees_cleaned_df["throwing_label"] = 0
 brees_cleaned_df.loc[
@@ -147,6 +162,8 @@ brees_cleaned_df.to_csv(
 rodgers_raw_df = process_video("data/raw_videos/aaron_rodgers_throw.mp4", MODEL_PATH)
 rodgers_raw_df = pd.DataFrame(rodgers_raw_df)
 rodgers_cleaned_df = elbow_angle_cleaning(rodgers_raw_df)
+rodgers_cleaned_df = add_temporal_features(rodgers_cleaned_df)
+
 
 rodgers_cleaned_df["throwing_label"] = 0
 rodgers_cleaned_df.loc[
@@ -164,6 +181,8 @@ rodgers_cleaned_df.to_csv(
 herbert_raw_df = process_video("data/raw_videos/justin_herbert_throw.mp4", MODEL_PATH)
 herbert_raw_df = pd.DataFrame(herbert_raw_df)
 herbert_cleaned_df = elbow_angle_cleaning(herbert_raw_df)
+herbert_cleaned_df = add_temporal_features(herbert_cleaned_df)
+
 
 herbert_cleaned_df["throwing_label"] = 0
 herbert_cleaned_df.loc[
@@ -181,6 +200,8 @@ herbert_cleaned_df.to_csv(
 combine_1_raw_df = process_video("data/raw_videos/combine_throw_1.mp4", MODEL_PATH)
 combine_1_raw_df = pd.DataFrame(combine_1_raw_df)
 combine_1_cleaned_df = elbow_angle_cleaning(combine_1_raw_df)
+combine_1_cleaned_df = add_temporal_features(combine_1_cleaned_df)
+
 
 combine_1_cleaned_df["throwing_label"] = 0
 combine_1_cleaned_df.loc[
@@ -199,6 +220,8 @@ combine_1_cleaned_df.to_csv(
 stroud_raw_df = process_video("data/raw_videos/cj_stroud_throw.mp4", MODEL_PATH)
 stroud_raw_df = pd.DataFrame(stroud_raw_df)
 stroud_cleaned_df = elbow_angle_cleaning(stroud_raw_df)
+stroud_cleaned_df = add_temporal_features(stroud_cleaned_df)
+
 
 stroud_cleaned_df["throwing_label"] = 0
 stroud_cleaned_df.loc[
@@ -216,6 +239,8 @@ stroud_cleaned_df.to_csv(
 wilson_raw_df = process_video("data/raw_videos/russel_wilson_throw.mp4", MODEL_PATH)
 wilson_raw_df = pd.DataFrame(wilson_raw_df)
 wilson_cleaned_df = elbow_angle_cleaning(wilson_raw_df)
+wilson_cleaned_df = add_temporal_features(wilson_cleaned_df)
+
 
 wilson_cleaned_df["throwing_label"] = 0
 wilson_cleaned_df.loc[
@@ -229,3 +254,86 @@ wilson_cleaned_df.to_csv(
     index=False
 )
 
+
+
+training_1_raw_df = process_video("data/raw_videos/training_1.mp4", MODEL_PATH)
+training_1_raw_df = pd.DataFrame(training_1_raw_df)
+training_1_cleaned_df = elbow_angle_cleaning(training_1_raw_df)
+training_1_cleaned_df = add_temporal_features(training_1_cleaned_df)
+
+training_1_cleaned_df["throwing_label"] = 0
+training_1_cleaned_df.loc[
+    (training_1_cleaned_df["frame_number"] > 7) &
+    (training_1_cleaned_df["frame_number"] < 18), 
+    "throwing_label"
+] = 1
+training_1_cleaned_df.to_csv(
+    "outputs/training_1_angles.csv",
+    index=False
+)
+
+
+
+kid_throw_1_raw_df = process_video("data/raw_videos/kid_throw_1.mp4", MODEL_PATH)
+kid_throw_1_raw_df = pd.DataFrame(kid_throw_1_raw_df)
+kid_throw_1_cleaned_df = elbow_angle_cleaning(kid_throw_1_raw_df)
+kid_throw_1_cleaned_df = add_temporal_features(kid_throw_1_cleaned_df)
+
+kid_throw_1_cleaned_df["throwing_label"] = 0
+kid_throw_1_cleaned_df.loc[
+    (kid_throw_1_cleaned_df["frame_number"] > 61) &
+    (kid_throw_1_cleaned_df["frame_number"] < 76), 
+    "throwing_label"
+] = 1
+kid_throw_1_cleaned_df.to_csv(
+    "outputs/kid_throw_1_angles.csv",
+    index=False
+)
+
+
+
+kurt_benkert_1_raw_df = process_video("data/raw_videos/kurt_benkert_1.mp4", MODEL_PATH)
+kurt_benkert_1_raw_df = pd.DataFrame(kurt_benkert_1_raw_df)
+kurt_benkert_1_cleaned_df = elbow_angle_cleaning(kurt_benkert_1_raw_df)
+kurt_benkert_1_cleaned_df = add_temporal_features(kurt_benkert_1_cleaned_df)
+
+kurt_benkert_1_cleaned_df["throwing_label"] = 0
+kurt_benkert_1_cleaned_df.loc[
+    (kurt_benkert_1_cleaned_df["frame_number"] > 85) &
+    (kurt_benkert_1_cleaned_df["frame_number"] < 101), 
+    "throwing_label"
+] = 1
+kurt_benkert_1_cleaned_df.to_csv(
+    "outputs/kurt_benkert_1_angles.csv",
+    index=False
+)
+
+kurt_benkert_2_raw_df = process_video("data/raw_videos/kurt_benkert_2.mp4", MODEL_PATH)
+kurt_benkert_2_raw_df = pd.DataFrame(kurt_benkert_2_raw_df)
+kurt_benkert_2_cleaned_df = elbow_angle_cleaning(kurt_benkert_2_raw_df)
+kurt_benkert_2_cleaned_df = add_temporal_features(kurt_benkert_2_cleaned_df)
+
+kurt_benkert_2_cleaned_df["throwing_label"] = 0
+kurt_benkert_2_cleaned_df.loc[
+    (kurt_benkert_2_cleaned_df["frame_number"] > 168) &
+    (kurt_benkert_2_cleaned_df["frame_number"] < 185), 
+    "throwing_label"
+] = 1
+kurt_benkert_2_cleaned_df.to_csv(
+    "outputs/kurt_benkert_2_angles.csv",
+    index=False
+)
+
+"""
+negative_raw_df = process_video("data/raw_videos/negative.mp4", MODEL_PATH)
+negative_raw_df = pd.DataFrame(negative_raw_df)
+negative_cleaned_df = elbow_angle_cleaning(negative_raw_df)
+negative_cleaned_df = add_temporal_features(negative_cleaned_df)
+
+negative_cleaned_df["throwing_label"] = 0
+
+
+negative_cleaned_df.to_csv(
+    "outputs/negative_angles.csv",
+    index=False
+)

@@ -14,3 +14,16 @@ outputs/demo_videos
 .env.*
 
 outputs/
+
+.git-backup/
+
+# Old frontend Git history
+.git-backup/
+
+# Frontend dependencies
+node_modules/
+.expo/
+
+__pycache__/
+*.pyc
+results.csv

@@ -42,6 +42,7 @@ export default function Analyze() {
         body: formData
      })
       const data = await response.json();
+      console.log("COACH ANALYSIS RESPONSE:", data.coach_analysis);
 
       setMetrics(data.metrics)
       setAnnotatedVideoUrl(

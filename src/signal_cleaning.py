@@ -79,6 +79,16 @@ def elbow_angle_cleaning(df: pd.DataFrame, visibility_threshold: float = 0.5, ma
         .mean()
     )
 
+    ### Elbow angular velocity calculation
+
+    cleaned_angle["elbow_angular_velocity"] = (
+        cleaned_angle["elbow_angle_smoothed"]
+        - cleaned_angle["elbow_angle_smoothed"].shift(2)
+    ) / (
+        (cleaned_angle["timestamp"]
+        - cleaned_angle["timestamp"].shift(2)) / 1000
+    )
+
     ### WRIST SHOULDER STATISTICS FOR THROW INTERVAL MODEL
 
     cleaned_angle["wrist_change"] = (
@@ -90,7 +100,7 @@ def elbow_angle_cleaning(df: pd.DataFrame, visibility_threshold: float = 0.5, ma
     cleaned_angle["wrist_to_shoulder"] = (cleaned_angle["shoulder_y"] - cleaned_angle["wrist_y"]) / abs(cleaned_angle["left_shoulder_x"] - cleaned_angle["shoulder_x"])
 
     cleaned_angle["shoulder_rotation"] = np.degrees(
-        np.arctan(
+        np.arctan2(
             cleaned_angle["shoulder_y"] - cleaned_angle["left_shoulder_y"], 
             cleaned_angle["shoulder_x"] - cleaned_angle["left_shoulder_x"], 
 

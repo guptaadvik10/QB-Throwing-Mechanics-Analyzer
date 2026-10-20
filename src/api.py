@@ -30,7 +30,7 @@ app.add_middleware(
 )
 
 MODEL_PATH = "models/pose_landmarker_full.task"
-throw_model = load("models/throw_classifier.joblib")
+throw_model = load("models/throw_classifier_V2.joblib")
 
 @app.post("/analyze")
 async def analyze_video(file: UploadFile = File(...)):
