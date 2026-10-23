@@ -13,7 +13,7 @@ An application that analyzes user-selected videos of quarterback throwing motion
 - 🧠 **AI Generated Coaching Feedback**: Summary of metrics in a digestible manner along with key insights
 - 📱 **Interactive Application**: React Native/Expo frontend for uploading videos and viewing analysis results.
 
-## Tech Stack 
+## 📚 Tech Stack 
 
 - **Frontend**: React Native, Expo, JavaScript/TypeScript
 - **Backend**: Python, FastAPI, Uvicorn
