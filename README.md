@@ -22,4 +22,9 @@ An application that analyzes user-selected videos of quarterback throwing motion
 - **Database**: Supabase (PostgreSQL), SQLAlchemy
 - **AI Integration**: OpenAI API
 
+## 📸 Demo
+![Throw Analysis](screenshots/analyze.png)
+
+
+
   
