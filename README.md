@@ -48,5 +48,13 @@ Since most biomechanical metrics are calculated using the release frame, a Rando
 
 Through FastAPI, the React-based frontend receives the metrics as a JSON response as well as the OpenAI generated coaching analysis. Supabase is integrated as well to store individual videos, with each row representing a new analysis, grouped by user. 
 
+## 📊 Model Development Evaluation 
 
+### Training Data and Feature Engineering
+
+Before model training, each frame was assigned a binary label indicating whether it belonged to the throwing window. Features such as wrist height relative to the shoulder, elbow angle, and wrist-to-shoulder distance were extracted from the landmark data. Positional measurements were normalized using upper-arm or torso length to reduce the effects of differences in body size and camera distance. Rolling-window statistics were also introduced to capture changes in movement across consecutive frames rather than relying solely on individual-frame measurements.
+
+### Model Evaluation and Cross Validation
+
+A Random Forest classifier was trained using scikit-learn to identify throwing frames based on the engineered biomechanical features. To evaluate the model, 4-fold GroupKFold cross-validation was used, with frames grouped by their source video. Since neighboring frames within the same video are highly correlated, separating videos between training and testing prevents data leakage that could otherwise artificially inflate evaluation results. F1 score was prioritized as the primary evaluation metric to balance precision and recall, accounting for both false positives and false negatives. Since the throwing window typically consists of only 10 frames out of a 40–50 frame clip, accuracy alone could be misleading, as a model could achieve relatively high accuracy simply by predicting most frames as non-throwing.
   
