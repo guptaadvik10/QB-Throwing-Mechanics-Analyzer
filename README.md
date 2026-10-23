@@ -36,10 +36,17 @@ An application that analyzes user-selected videos of quarterback throwing motion
 
 ## ⚙️ How It Works
 
-### Video Processing and Pose Estimation
+### 📹 Video Processing and Pose Estimation
 
-Using the MediaPipe pose detection Google API, various different landmarks are tracked throughout the clip. With this comes a fair share of inaccurate and messy measurements, leading to signal cleaning using visibility and immediate jumps to filter through trustable predictions, followed by interpolation and smoothing. From here, an assortment of metrics are created. 
+Using the MediaPipe pose detection Google framework, various different landmarks are tracked throughout the clip. With this comes a fair share of inaccurate and messy measurements, leading to signal cleaning using visibility and immediate jumps to filter through reliable landmark predictions, followed by interpolation and smoothing. From here, an assortment of metrics are created. 
 
+### 🔎 Throw Detection and Biomechanical Analysis
+
+Since most biomechanical metrics are calculated using the release frame, a Random Forest Classifier was trained to extract a throwing window, from the cocking of the arm to the release. From the predicted throw window, the pipeline then estimates the release frame, found by the frame with the maximum elbow angle
+
+### 📝 Results and Feedback
+
+Through FastAPI, the React-based frontend receives the metrics as a JSON response as well as the OpenAI generated coaching analysis. Supabase is integrated as well to store individual videos, with each row representing a new analysis, grouped by user. 
 
 
   
