@@ -6,21 +6,20 @@ An application that analyzes user-selected videos of quarterback throwing motion
 
 ## ✨ Feautures
 
-- 🎥 **Video Based Throwing Analysis**: Extract body poses and landmarks through MediaPipe Pose Detection
+- 🎥 **Video Based Throwing Analysis**: Extracts body poses and landmarks through MediaPipe Pose Detection
 - 🤖 **Machine Learning Throw Detection**: Identifies throwing frame using Random Forest Classifier using extracted throw characteristics
 - ☁️ **Cloud Database**: Automatic user storage using Supabase (PostgreSQL)
-- ⚖️ **Throw Comparison**: Compare two throws side by side examine differences
+- ⚖️ **Throw Comparison**: Compare two throws side by side to examine differences
 - 🧠 **AI Generated Coaching Feedback**: Summary of metrics in a digestible manner along with key insights
 - 📱 **Interactive Application**: React Native/Expo frontend for uploading videos and viewing analysis results.
 
 ## Tech Stack 
 
-- Frontend: React Native, Expo, JavaScript/TypeScript
-- Backend: Python, FastAPI, Uvicorn
-- Computer Vision: MediaPipe, OpenCV
-- Signal cleaning / Metric Creation: pandas, NumPy
-- Machine Learning: scikit-learn, NumPy, pandas
-- Database: Supabase (PostgreSQL), SQLAlchemy
-- AI Integration: OpenAI API
+- **Frontend**: React Native, Expo, JavaScript/TypeScript
+- **Backend**: Python, FastAPI, Uvicorn
+- **Computer Vision**: MediaPipe, OpenCV
+- **Machine Learning / Signal Cleaning**: scikit-learn, NumPy, pandas
+- **Database**: Supabase (PostgreSQL), SQLAlchemy
+- **AI Integration**: OpenAI API
 
   
