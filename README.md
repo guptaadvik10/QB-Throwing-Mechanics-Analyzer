@@ -34,6 +34,11 @@ An application that analyzes user-selected videos of quarterback throwing motion
 </p>
 
 
+## ⚙️ How It Works
+
+**1. Video Processing and Pose Estimation**
+Using the MediaPipe pose detection Google API, various different landmarks are tracked throughout the clip. With this comes a fair share of inaccurate and messy measurements, leading to signal cleaning using visibility and immediate jumps to filter through trustable predictions, followed by interpolation and smoothing. From here, an assortment of metrics are created. 
+
 
 
   
