@@ -23,7 +23,7 @@ An application that analyzes user-selected videos of quarterback throwing motion
 - **AI Integration**: OpenAI API
 
 ## 📸 Demo
-![Throw Analysis](screenshots/analyze.png)
+![Throw Analysis](screenshots/analyze)
 
 
 
