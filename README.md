@@ -57,4 +57,8 @@ Before model training, each frame was assigned a binary label indicating whether
 ### Model Evaluation and Cross Validation
 
 A Random Forest classifier was trained using scikit-learn to identify throwing frames based on the engineered biomechanical features. To evaluate the model, 4-fold GroupKFold cross-validation was used, with frames grouped by their source video. Since neighboring frames within the same video are highly correlated, separating videos between training and testing prevents data leakage that could otherwise artificially inflate evaluation results. F1 score was prioritized as the primary evaluation metric to balance precision and recall, accounting for both false positives and false negatives. Since the throwing window typically consists of only 10 frames out of a 40–50 frame clip, accuracy alone could be misleading, as a model could achieve relatively high accuracy simply by predicting most frames as non-throwing.
+
+### Feature Importance and Ablation Testing
+
+To finalize the model's predictors, feature ablation and permutation importance were implemented. By measuring the drop in F1 score after randomly shuffling individual feature columns, permutation importance helped identify influential features as well as those with little or negative impact on performance. Using these results as a guideline, feature ablation was then used to evaluate different combinations of predictors and determine which produced the strongest model performance.
   
