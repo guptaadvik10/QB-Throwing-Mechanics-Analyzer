@@ -25,11 +25,11 @@ An application that analyzes user-selected videos of quarterback throwing motion
 ## 📸 Demo
 <p align="center">
   <img src="screenshots/analyze" width="48%" alt="Throw Analysis">
-  <img src="screenshots/history" width="48%" alt="Throw History">
+  <img src="screenshots/top_compare" width="48%" alt="Throw History">
 </p>
 
 <p align="center">
-  <img src="screenshots/top_compare" width="48%" alt="Throw Comparison">
+  <img src="screenshots/history" width="48%" alt="Throw Comparison">
   <img src="screenshots/bottom_compare" width="48%" alt="Comparison Metrics">
 </p>
 
